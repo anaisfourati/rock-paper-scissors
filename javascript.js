@@ -29,21 +29,20 @@ function getComputerChoice() {
 
 // Create a function that prompts the user to enter rock, paper or scissor and returns what the user entered
 
-// let getHumanChoice = prompt("Choose between rock, paper or scissor!");
-
 function getHumanChoice() {
-    let promptUser = prompt("Choose between rock, paper or scissor!");
 
-    if (getHumanChoice === "rock") {
-        return "rock";
-    } else if (getHumanChoice === "paper") {
-        return "paper";
-    } else if (getHumanChoice === "scissor") {
-        return "scissor";
+    let userChoice = prompt("Choose between rock, paper or scissor!");
+
+    if (userChoice === 'rock') {
+        return 'rock';
+    } else if (userChoice === 'paper') {
+        return 'paper';
+    } else if (userChoice === 'scissor') {
+        return 'scissor';
     }
     
 }
 
-
+console.log(getHumanChoice());
 
 
