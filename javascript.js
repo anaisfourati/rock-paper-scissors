@@ -12,50 +12,59 @@ const myArray = ['rock', 'paper', 'scissor'];
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound() {
-    let humanChoice = getHumanChoice().toLowerCase();
-    let computerChoice = getComputerChoice().toLowerCase();
 
-    if (humanChoice === computerChoice) {
-        console.log("That's a draw! Try again...");
-    } 
+// Create a playGame function
+function playGame() {
 
-    if (humanChoice === 'rock' && computerChoice === 'scissor') {
-        score(true);
-    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-        score(true);
-    } else if (humanChoice === 'scissor' && computerChoice === 'paper') {
-        score(true);
-    }  else {
-        score(false);
-    }
-
-    console.log(computerChoice);
-    console.log(humanScore);
-
-    // Functions that playRound needs to run
-    function getHumanChoice() {
-        let userChoice = prompt("Choose between rock, paper or scissor!");
-        return userChoice
-    }
-
-    function getComputerChoice() {
-        return myArray[Math.floor(Math.random() * myArray.length)];
-    }
-
-    function score(humanWon) {
-        if (humanWon) {
-            console.log(`You won! ${humanChoice} beats ${computerChoice}!`);
-            humanScore++;
+    function playRound() {
+        let humanChoice = getHumanChoice().toLowerCase();
+        let computerChoice = getComputerChoice().toLowerCase();
+    
+        if (humanChoice === computerChoice) {
+            console.log("That's a draw! Try again...");
+        } else if ((humanChoice === 'rock' && computerChoice === 'scissor') || 
+                   (humanChoice === 'paper' && computerChoice === 'rock') || 
+                   (humanChoice === 'scissor' && computerChoice === 'paper')) {
+                  score(true);
         } else {
-            console.log(`You lost... ${computerChoice} beats ${humanChoice}!`);
-            computerScore++;
+            score(false);
         }
+    
+        console.log(computerChoice);
+        console.log(humanScore);
+    
+        // Functions that playRound needs to run
+        function getHumanChoice() {
+            let userChoice = prompt("Choose between rock, paper or scissor!");
+            return userChoice
+        }
+    
+        function getComputerChoice() {
+            return myArray[Math.floor(Math.random() * myArray.length)];
+        }
+    
+        function score(humanWon) {
+            if (humanWon) {
+                console.log(`You won! ${humanChoice} beats ${computerChoice}!`);
+                humanScore++;
+            } else {
+                console.log(`You lost... ${computerChoice} beats ${humanChoice}!`);
+                computerScore++;
+            }
+        }
+    }
+
+    for (i = 0; i < 5; i++) {
+        playRound();
+    }
+
+    if (humanScore > computerScore) {
+        console.log("Congrats! You won the game");
+    } else {
+        console.log("Oh no... you lost the game...")
     }
 }
 
 
-
-
-console.log(playRound());
+console.log(playGame());
 
