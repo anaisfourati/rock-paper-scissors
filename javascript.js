@@ -60,8 +60,10 @@ function playGame() {
 
     if (humanScore > computerScore) {
         console.log("Congrats! You won the game");
-    } else {
+    } else if (humanScore < computerScore) {
         console.log("Oh no... you lost the game...")
+    } else {
+        console.log("You have the same score as the computer...")
     }
 }
 
